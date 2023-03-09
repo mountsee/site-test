@@ -119796,7 +119796,7 @@ class IFCLoader extends Loader {
 
   // Sets up the IFC loading
   const ifcLoader = new IFCLoader();
-  ifcLoader.ifcManager.setWasmPath("../../../");
+  ifcLoader.ifcManager.setWasmPath("../wasm/");
   //const input = document.URL("https://zueribox.stadt-zuerich.ch/zueribox/index.php/s/MPpXUhggwomUOwW")
   // const input = document.getElementById("file-input");
   document.getElementById("file-input");

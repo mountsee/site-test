@@ -31696,7 +31696,7 @@ var require_web_ifc_mt = __commonJS({
         }
         function getBinaryPromise() {
           if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) && typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-            return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
+            return fetch(wasmBinaryFile, { credentials: "include" }).then(function(response) {
               if (!response["ok"]) {
                 throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
               }
@@ -31740,7 +31740,7 @@ var require_web_ifc_mt = __commonJS({
           }
           function instantiateAsync() {
             if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-              return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
+              return fetch(wasmBinaryFile, { credentials: "include" }).then(function(response) {
                 var result = WebAssembly.instantiateStreaming(response, info);
                 return result.then(receiveInstantiatedSource, function(reason) {
                   err("wasm streaming compile failed: " + reason);
@@ -37582,7 +37582,7 @@ var require_web_ifc = __commonJS({
         }
         function getBinaryPromise() {
           if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) && typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-            return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
+            return fetch(wasmBinaryFile, { credentials: "include" }).then(function(response) {
               if (!response["ok"]) {
                 throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
               }
@@ -37615,7 +37615,7 @@ var require_web_ifc = __commonJS({
           }
           function instantiateAsync() {
             if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-              return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
+              return fetch(wasmBinaryFile, { credentials: "include" }).then(function(response) {
                 var result = WebAssembly.instantiateStreaming(response, info);
                 return result.then(receiveInstantiatedSource, function(reason) {
                   err("wasm streaming compile failed: " + reason);
@@ -109919,7 +109919,7 @@ class FileLoader extends Loader {
 		// create request
 		const req = new Request( url, {
 			headers: new Headers( this.requestHeader ),
-			credentials: this.withCredentials ? 'include' : 'same-origin',
+			credentials: this.withCredentials ? 'include' : 'include',
 			// An abort controller could be added within a future PR
 		} );
 
@@ -111304,7 +111304,7 @@ class ImageBitmapLoader extends Loader {
 		}
 
 		const fetchOptions = {};
-		fetchOptions.credentials = ( this.crossOrigin === 'anonymous' ) ? 'same-origin' : 'include';
+		fetchOptions.credentials = ( this.crossOrigin === 'anonymous' ) ? 'include' : 'include';
 		fetchOptions.headers = this.requestHeader;
 
 		fetch( url, fetchOptions ).then( function ( res ) {

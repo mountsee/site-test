@@ -86,7 +86,7 @@ import {
 
   // Sets up the IFC loading
   const ifcLoader = new IFCLoader();
-  ifcLoader.ifcManager.setWasmPath("../wasm/");
+  ifcLoader.ifcManager.setWasmPath("//wasm/");
   //const input = document.URL("https://zueribox.stadt-zuerich.ch/zueribox/index.php/s/MPpXUhggwomUOwW")
   // const input = document.getElementById("file-input");
   const input = document.getElementById("file-input");
